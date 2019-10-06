@@ -42,7 +42,7 @@ private:
     float softmax(float x, cv::Mat result, bool re);
 	
 public:
-    virtual	cv::Mat run(cv::Mat);
+    	cv::Mat run(cv::Mat);
 	
 };
 

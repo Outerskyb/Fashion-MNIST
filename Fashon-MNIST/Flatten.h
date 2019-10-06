@@ -9,7 +9,7 @@ class Flatten :
 	
 public:
 
-	virtual cv::Mat run(cv::Mat mat ) {
+	 cv::Mat run(cv::Mat mat ) {
 		mat = mat.reshape(1,1);
 		return mat;
 	}
