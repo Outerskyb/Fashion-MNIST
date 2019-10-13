@@ -328,3 +328,4 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+/Fashon-MNIST/opencv_world346d.dll

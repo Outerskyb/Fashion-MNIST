@@ -29,6 +29,7 @@ float FC::softmax(float x , cv::Mat result,bool re)
                 result.at<float>(k, 0) += weights.at<float>(k, i * input.cols + j) * input.at<float>(i, j);
             }
         }
+        result.at<float>(k, 0) /= number_of_input;
         result.at<float>(k, 0) += bias.at<float>(k, 0);
     }
 

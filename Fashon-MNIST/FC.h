@@ -25,8 +25,8 @@ public:
         for (int i = 0; i < number_of_node; i++) {
             for (int j = 0; j < number_of_input; j++) {
                 weights.at<float>(i, j) = ((rand() % 2) ? 1 : -1) * rand() / 1000.0 + 1;
-                bias.at<float>(i, j) = ((rand() % 2) ? 1 : -1) * rand() / 1000.0 + 1;
             }
+            bias.at<float>(i, 0) = ((rand() % 2) ? 1 : -1) * rand() / 1000.0 + 1;
         }
     }
 
