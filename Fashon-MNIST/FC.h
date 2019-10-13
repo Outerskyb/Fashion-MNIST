@@ -20,7 +20,7 @@ public:
     {
         srand(time(0));
         weights = cv::Mat(number_of_node, number_of_input, CV_32FC1);
-        bias = cv::Mat(number_of_node, number_of_input, CV_32FC1);
+        bias = cv::Mat(number_of_node, 1, CV_32FC1);
 
         for (int i = 0; i < number_of_node; i++) {
             for (int j = 0; j < number_of_input; j++) {

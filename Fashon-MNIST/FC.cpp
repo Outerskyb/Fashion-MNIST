@@ -26,10 +26,12 @@ float FC::softmax(float x , cv::Mat result,bool re)
     for (int k = 0; k < number_of_node; k++) {
         for (int i = 0; i < input.rows; i++) {
             for (int j = 0; j < input.cols; j++) {
-                result.at<float>(k, 0) += weights.at<float>(k, i * input.cols + j) * input.at<float>(i, j) + bias.at<float>(k, i*input.cols+j);
+                result.at<float>(k, 0) += weights.at<float>(k, i * input.cols + j) * input.at<float>(i, j);
             }
         }
+        result.at<float>(k, 0) += bias.at<float>(k, 0);
     }
+
     if (activation_function == ActivationFunction::Relu) {
         for (int k = 0; k < number_of_node; k++) {
             result.at<float>(k, 0) = relu(result.at<float>(k, 0));
