@@ -17,7 +17,7 @@ float FC::softmax(float x , cv::Mat result,bool re)
         }
         return 0;
     }
-    return x/sum;
+    return exp(x)/sum;
 }
 
  cv::Mat FC::run(cv::Mat input)
@@ -47,3 +47,9 @@ float FC::softmax(float x , cv::Mat result,bool re)
     
     return result;
 }
+
+ cv::Mat FC::train(cv::Mat input,cv::Mat target)
+ {
+
+     return cv::Mat();
+ }

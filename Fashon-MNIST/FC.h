@@ -43,6 +43,7 @@ private:
 
 public:
     cv::Mat run(cv::Mat);
+    cv::Mat train(cv::Mat,cv::Mat);
 
 };
 

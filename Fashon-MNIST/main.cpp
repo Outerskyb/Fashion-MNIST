@@ -36,6 +36,6 @@ int main()
 		result = layer->run(result);
 	}
     for (int i = 0; i < result.rows; i++) {
-        cout << (result.at<float>(i, 0)) << ' ';
+        cout << (result.at<float>(i, 0)) << '\n';
     }
 }
