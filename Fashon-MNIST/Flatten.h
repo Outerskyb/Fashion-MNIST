@@ -9,9 +9,15 @@ class Flatten :
 	
 public:
 
-	 cv::Mat run(cv::Mat mat ) {
-		mat = mat.reshape(1,1);
+	 cv::Mat run(cv::Mat mat ) 
+     {
+		mat = mat.reshape(1,mat.rows*mat.cols);
 		return mat;
-	}
+	 }
+
+     cv::Mat train(cv::Mat input, cv::Mat target) 
+     {
+         return run(input);
+     }
 };
 

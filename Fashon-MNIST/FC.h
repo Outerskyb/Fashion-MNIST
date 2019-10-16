@@ -38,6 +38,9 @@ private:
     cv::Mat bias;
 
 private:
+    cv::Mat ip;
+
+private:
     float relu(float);
     float softmax(float x, cv::Mat result, bool re);
 

@@ -39,12 +39,55 @@ int main()
 	model.push_back(&relu1);
 	model.push_back(&softmax1);
 
+    //////////////////////////////////
     cv::Mat result;
     vec[0].copyTo(result);
 	for (auto& layer : model)
 	{
 		result = layer->run(result);
 	}
+    for (int i = 0; i < result.rows; i++) {
+        cout << (result.at<float>(i, 0)) << '\n';
+    }
+
+    //////////////////////////////////
+    vec[0].copyTo(result);
+    for (auto& layer : model) {
+        result = layer->train(result,cv::Mat());
+    }
+    result = get_last_delta(result,lbl[0]);
+    for (auto it = model.rbegin(); it != model.rend();it++) {
+        result = (*it)->train(cv::Mat(), result);
+    }
+
+    //////////////////////////////////
+    cout << '\n';
+    vec[0].copyTo(result);
+    for (auto& layer : model)
+    {
+        result = layer->run(result);
+    }
+    for (int i = 0; i < result.rows; i++) {
+        cout << (result.at<float>(i, 0)) << '\n';
+    }
+
+    //////////////////////////////////
+    vec[0].copyTo(result);
+    for (auto& layer : model) {
+        result = layer->train(result, cv::Mat());
+    }
+    result = get_last_delta(result, lbl[0]);
+    for (auto it = model.rbegin(); it != model.rend(); it++) {
+        result = (*it)->train(cv::Mat(), result);
+    }
+
+    //////////////////////////////////
+    cout << '\n';
+    vec[0].copyTo(result);
+    for (auto& layer : model)
+    {
+        result = layer->run(result);
+    }
     for (int i = 0; i < result.rows; i++) {
         cout << (result.at<float>(i, 0)) << '\n';
     }

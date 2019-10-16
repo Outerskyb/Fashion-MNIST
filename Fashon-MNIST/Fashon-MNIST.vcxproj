@@ -158,6 +158,7 @@
     <ClInclude Include="defines.h" />
     <ClInclude Include="FC.h" />
     <ClInclude Include="Flatten.h" />
+    <ClInclude Include="globals.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
