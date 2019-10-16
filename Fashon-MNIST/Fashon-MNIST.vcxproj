@@ -159,6 +159,7 @@
     <ClInclude Include="FC.h" />
     <ClInclude Include="Flatten.h" />
     <ClInclude Include="Layer.h" />
+    <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FC.cpp" />
