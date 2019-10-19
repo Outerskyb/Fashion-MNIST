@@ -13,6 +13,7 @@ float FC::softmax(float x, cv::Mat result, bool re)
 {
     static float sum = 0;
     if (re) {
+        sum = 0;
         for (int i = 0; i < number_of_node; i++) {
             sum += exp(result.at<float>(i, 0));
         }
