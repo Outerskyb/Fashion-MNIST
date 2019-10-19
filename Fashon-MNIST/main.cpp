@@ -51,14 +51,16 @@ int main()
     }
 
     //////////////////////////////////
-    for (int i = 0; i < 2000; i++) {
-        vec[i].copyTo(result);
-        for (auto& layer : model) {
-            result = layer->train(result, cv::Mat());
-        }
-        result = get_last_delta(result, lbl[i]);
-        for (auto it = model.rbegin(); it != model.rend(); it++) {
-            result = (*it)->train(cv::Mat(), result);
+    for (int j = 0; j < 5; j++) {
+        for (int i = 0; i < vec.size(); i++) {
+            vec[i].copyTo(result);
+            for (auto& layer : model) {
+                result = layer->train(result, cv::Mat());
+            }
+            result = get_last_delta(result, lbl[i]);
+            for (auto it = model.rbegin(); it != model.rend(); it++) {
+                result = (*it)->train(cv::Mat(), result);
+            }
         }
     }
 
