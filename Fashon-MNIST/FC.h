@@ -19,14 +19,12 @@ public:
     FC(ActivationFunction af, int number_of_input, int number_of_node) : activation_function(af), number_of_input(number_of_input), number_of_node(number_of_node)
     {
         srand(time(0));
-        weights = cv::Mat(number_of_node, number_of_input, CV_32FC1);
-        bias = cv::Mat(number_of_node, 1, CV_32FC1);
+        weights = cv::Mat(number_of_node, number_of_input+1, CV_32FC1);
 
         for (int i = 0; i < number_of_node; i++) {
-            for (int j = 0; j < number_of_input; j++) {
+            for (int j = 0; j < number_of_input+1; j++) {
                 weights.at<float>(i, j) = ((rand() % 2) ? 1 : -1) * rand() / 1000.0 + 1;
             }
-            bias.at<float>(i, 0) = ((rand() % 2) ? 1 : -1) * rand() / 1000.0 + 1;
         }
     }
 
@@ -35,7 +33,6 @@ private:
     int number_of_input;
     int number_of_node;
     cv::Mat weights;
-    cv::Mat bias;
 
 private:
     cv::Mat ip;

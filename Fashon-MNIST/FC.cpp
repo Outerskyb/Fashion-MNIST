@@ -32,7 +32,7 @@ cv::Mat FC::run(cv::Mat input)
             }
         }
         result.at<float>(k, 0) /= number_of_input;
-        result.at<float>(k, 0) += bias.at<float>(k, 0);
+        result.at<float>(k, 0) += weights.at<float>(k,number_of_input);
     }
 
     if (activation_function == ActivationFunction::Relu) {
@@ -58,12 +58,12 @@ cv::Mat FC::train(cv::Mat input, cv::Mat target)
         return  this->run(input);
     }
     else {
-        cv::Mat delta(ip.rows, ip.cols, CV_32FC1);
+        cv::Mat delta = cv::Mat::zeros(ip.rows, ip.cols, CV_32FC1);
         for (int k = 0; k < number_of_input; k++) {
             for (int i = 0; i < number_of_node; i++) {
                 delta.at<float>(k, 0) += weights.at<float>(i,k) * target.at<float>(i, 0);
             }
-            delta.at<float>(k, 0) *= ip.at<float>(k, 0) * (1 - ip.at<float>(k, 0));
+            delta.at<float>(k, 0) *= ip.at<float>(k, 0) * (1 - ip.at<float>(k, 0)) *-1;
         }
 
         for (int k = 0; k < number_of_node; k++) {
@@ -73,6 +73,7 @@ cv::Mat FC::train(cv::Mat input, cv::Mat target)
                         += etha * ip.at<float>(i, j) * target.at<float>(k, 0);
                 }
             }
+            weights.at<float>(k, ip.rows * ip.cols) += etha * target.at<float>(k, 0);
         }
         ip = cv::Mat();
         return delta;
