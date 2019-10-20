@@ -1,3 +1,3 @@
 #pragma once
 
-const float etha = 0.05;
+const float etha = 1;

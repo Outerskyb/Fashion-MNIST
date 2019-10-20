@@ -38,6 +38,9 @@ private:
     int number_of_node;
     cv::Mat weights;
 
+public:
+    cv::Mat debug_get_weights();
+
 private:
     cv::Mat ip;
 

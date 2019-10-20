@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include "opencv2/opencv.hpp"
 #include "utils.h"
 #include "Layer.h"
@@ -51,16 +52,19 @@ int main()
     }
 
     //////////////////////////////////
-    for (int j = 0; j < 5; j++) {
-        for (int i = 0; i < vec.size(); i++) {
-            vec[i].copyTo(result);
-            for (auto& layer : model) {
-                result = layer->train(result, cv::Mat());
-            }
-            result = get_last_delta(result, lbl[i]);
-            for (auto it = model.rbegin(); it != model.rend(); it++) {
-                result = (*it)->train(cv::Mat(), result);
-            }
+    int cnt = 0;
+    for (int i = 0; i < vec.size(); i++, cnt++) {
+        if (cnt % 100 == 0) {
+            cv::Mat we = ((FC*)model[2])->debug_get_weights();
+            cv::imwrite(string("weights/weight") + to_string(i) + string(".png"), we);
+        }
+        vec[i].copyTo(result);
+        for (auto& layer : model) {
+            result = layer->train(result, cv::Mat());
+        }
+        result = get_last_delta(result, lbl[i]);
+        for (auto it = model.rbegin(); it != model.rend(); it++) {
+            result = (*it)->train(cv::Mat(), result);
         }
     }
 
