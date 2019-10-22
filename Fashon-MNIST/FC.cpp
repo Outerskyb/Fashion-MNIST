@@ -65,12 +65,14 @@ cv::Mat FC::train(cv::Mat input, cv::Mat target)
         return  this->run(input);
     }
     else {
+        //calculate previous layer's delta
+        //activation`(prev layer's output == curr's input) * sigma(curr's node's weight * curr's node's delta)
         cv::Mat delta = cv::Mat::zeros(ip.rows, ip.cols, CV_32FC1);
         for (int k = 0; k < number_of_input; k++) {
             for (int i = 0; i < number_of_node; i++) {
                 delta.at<float>(k, 0) += weights.at<float>(i,k) * target.at<float>(i, 0);
             }
-            delta.at<float>(k, 0) *= (ip.at<float>(k, 0) == 0) ? 0 : 1; // *(1 - ip.at<float>(k, 0));
+            delta.at<float>(k, 0) *= (ip.at<float>(k, 0) == 0) ? 0 : 1; //relu derivative // *(1 - ip.at<float>(k, 0));
         }
 
         for (int k = 0; k < number_of_node; k++) {
