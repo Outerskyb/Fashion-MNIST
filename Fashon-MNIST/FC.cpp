@@ -7,7 +7,7 @@ cv::Mat FC::debug_get_weights()
 {
     cv::Mat temp;
     cv::normalize(weights, temp,0,255, cv::NORM_MINMAX);
-    return weights;
+    return temp;
 }
 
 float FC::relu(float x)
