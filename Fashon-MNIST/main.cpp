@@ -57,11 +57,12 @@ int main()
     model.push_back(&fl);
     model.push_back(&relu1);
     model.push_back(&softmax1);
+    cv::imshow("img", vec[0]);
+    cv::waitKey(0);
 
-    //////////////////////////////////
+
     cv::Mat result;
-
-    for (int j = 0; j < 5; j++) {
+    for (int j = 0; j < 40; j++) {
         cout << "epoch : " << j << '\n';
         for (int i = 0; i < vec.size(); i++) {
           //  if (i % 200 == 0) cout << i << '/' << vec.size() << '\n';
@@ -74,7 +75,7 @@ int main()
                 result = (*it)->train(cv::Mat(), result);
             }
         }
-        //////////////////////////////////
+
         int cnt = 0;
         for (int i = 0; i < test_image.size(); i++) {
             test_image[i].copyTo(result);
@@ -83,14 +84,9 @@ int main()
                 result = layer->run(result);
             }
             if (test_label[i] == get_max_idx(result)) cnt++;
-       //    cout << (int)test_label[i] << " , " << get_max_idx(result)<<'\n';
         }
 
         cout << "accuracy : " << cnt / 10000.0 << '\n';
     }
-
-    
-    
-    //////////////////////////////////
 
 }
