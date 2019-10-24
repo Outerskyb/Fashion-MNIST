@@ -155,6 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Conv.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="FC.h" />
     <ClInclude Include="Flatten.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Conv.cpp" />
     <ClCompile Include="FC.cpp" />
     <ClCompile Include="Flatten.cpp" />
     <ClCompile Include="Layer.cpp" />
