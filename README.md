@@ -1,4 +1,4 @@
-# Fashon-MNIST
+# Fashion-MNIST
 My implementaion on a neural network for Fashon-MNIST
 
 It's just same model as following link's
