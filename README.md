@@ -1,5 +1,5 @@
 # Fashion-MNIST
-My implementaion on a neural network for Fashon-MNIST
+My implementaion on a neural network for Fashion-MNIST
 
 It's just same model as following link's
 
