@@ -4,7 +4,7 @@ and a neural network implemented for Fashion-MNIST
 
 only fc layer is implemented in library.
 there are no pooling and convolution layers.
-and all calculation is runing on single cpu thread.
+and all calculation is runing on a single cpu thread.
 
 Neural Network is in main.cpp 
 It's just a same model as following link's 
