@@ -1,15 +1,14 @@
 # Fashion-MNIST
-My implementaion on a neural network for Fashion-MNIST
+This project has two part, a library for implement neural network models,
+and a neural network implemented for Fashion-MNIST
 
-It's just same model as following link's
+only fc layer is implemented in library
+there are no pooling and convolution layers.
+and all calculation is runing on single cpu thread.
 
+Neural Network is in main.cpp
+It's just a same model as following link's
 https://www.tensorflow.org/tutorials/keras/classification
 
-Convolution layer is not working.
-
-I need to make learning process of that.
-
-Also I didn't make it run parallel. YET.
-
-
-U need OpenCV to run it. (I choose it cuz converTo is very useful func)
+# dependency
+opencv 3.4.6 with c++14 or later
