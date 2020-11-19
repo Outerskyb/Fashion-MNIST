@@ -2,12 +2,12 @@
 This project has two part, a library for implement neural network models,
 and a neural network implemented for Fashion-MNIST
 
-only fc layer is implemented in library
+only fc layer is implemented in library.
 there are no pooling and convolution layers.
 and all calculation is runing on single cpu thread.
 
-Neural Network is in main.cpp
-It's just a same model as following link's
+Neural Network is in main.cpp 
+It's just a same model as following link's 
 https://www.tensorflow.org/tutorials/keras/classification
 
 # dependency
